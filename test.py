@@ -1,5 +1,5 @@
-r="rajarajeswari"
-s="josephjoshuagiftson"
+r="sridhar"
+s="nagul"
 def remove(element,string):
 
     input_str = string
@@ -36,15 +36,14 @@ print(total_length)
 
 flames=["Frnds","love","Affection","Marriage","Enemy","sister"]
 n=6
-for i in range(0,6):
-    if n==1:
+for i in range(6,0):
+    if i==1:
         break
-    if n!=1:
+    if i!=1:
         
-        index=total_length%n
+        index=total_length%i
         flames.pop(index-1)
-        n=n-1
-    
-    
+           
+print(flames)    
 result=flames[0]
 print(result)
