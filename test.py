@@ -1,24 +1,5 @@
 r="sridhar"
 s="nagul"
-def remove(element,string):
-
-    input_str = string
-   
-
-   
-    result_str = "" 
-   
-    for i in range(0, len(input_str)): 
-        count=0
-        if count==0:
-            if input_str[i] != element: 
-                result_str = result_str + input_str[i] 
-            if input_str[i] == element:
-                count=1
-    return result_str
-
-
-
 
 for i in r:
     for j in s:
@@ -35,15 +16,23 @@ print(total_length)
 
 
 flames=["Frnds","love","Affection","Marriage","Enemy","sister"]
-n=6
-for i in range(6,0):
-    if i==1:
-        break
-    if i!=1:
-        
-        index=total_length%i
-        flames.pop(index-1)
-           
-print(flames)    
+
+# index=0
+# for i in range(6,0):
+#     print(i)
+#     if i==1:
+#         break
+#     if i>=1:
+#         print(i)
+
+
+while len(flames) > 1 : 
+	split_index = (total_length % len(flames) - 1) 
+	if (split_index>=0) :
+		right = flames[split_index + 1 : ]
+		left = flames[ : split_index] 
+		flames = right + left
+	else : 
+		flames = flames[ : len(flames) - 1]            
 result=flames[0]
 print(result)

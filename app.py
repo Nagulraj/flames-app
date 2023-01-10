@@ -9,27 +9,32 @@ def start():
     return render_template('index.html')
 
 def flames_func(r,s):
+    r = r.strip()
+    s = s.strip()
     for i in r:
         for j in s:
             if i==j:
+                # print(i)
+                # print(j)
                 r=r.replace(j, '', 1)
-                s=s.replace(j,'',1)
-#             
+                s=s.replace(j, '' ,1)
+    print(r)
+    print(len(r))
+    print(len(s))
     total_length=len(r)+len(s)
+    print(total_length)
     flames=["Frnds","love","Affection","Marriage","Enemy","sister"]
-    n=6
-    for i in range(0,6):
-        if n==1:
-            break
-        if n!=1:
-        
-            index=total_length%n
-            flames.pop(index-1)
-            n=n-1    
+    while len(flames) > 1 : 
+        split_index = (total_length % len(flames) - 1) 
+        if (split_index>=0) :
+            right = flames[split_index + 1 : ]
+            left = flames[ : split_index] 
+            flames = right + left
+        else : 
+            flames = flames[ : len(flames) - 1] 
     result=flames[0]
-    return result
-
-
+    print(result) 
+    return result 
 @app.route('/result',methods=['POST'])
 def submit():
     your_name=request.form.get("yname")
@@ -38,7 +43,7 @@ def submit():
     result={
         "result" : final,
     }
-    return render_template('result.html',result=result)
+    return render_template('index.html',result=result)
 
 
 if __name__ == '__main__':
